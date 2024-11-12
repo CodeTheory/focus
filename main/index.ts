@@ -124,6 +124,12 @@ const checkForUpdates = () => {
   checkForUpdates();
 })();
 
+app.on('activate', () => {
+  if (!windowManager.cropper.isOpen()) {
+    windowManager.cropper?.open();
+  }
+});
+
 app.on('window-all-closed', (event: any) => {
   app.dock.hide();
   event.preventDefault();
